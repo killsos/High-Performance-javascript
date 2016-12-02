@@ -85,8 +85,10 @@
 * 遍历DOM walking the DOM
 	1. childNodes nextSibling
 	2. DOM元素属性诸如childNodes firstChild nextSibling并不区分元素节点与其他节点（注释节点 文本节点）通过浏览器提供API已经自行过滤的
-	|属性名|被替代属性名|
-	|-----|:-----------:|
+	
+
+|属性名|被替代属性名|
+|-----|:-----------:|
 	 
 
 

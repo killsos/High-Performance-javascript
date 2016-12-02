@@ -57,6 +57,34 @@
 	* IE使用非原生Javascript对象来实现DOM对象,因此闭包会导致内存泄露
 	* 搜索自有属性比字面量或局部变量中读取数据代价更高  解析自有属性可能对调用toString()导致性能不高
 	* 嵌套成员 每次遇到点操作符,嵌套成员会导致javascript引擎搜索所有对象成员 locaction.href比window.location.href
+7. 缓存对象成员值 Caching object member values
+	* 函数中如果要多次读取同一个对象的属性 最佳做法是将属性值保存局部变量
+	
+#### 10. DOM编程 DOM Script
+* 浏览器通常会把DOM和Javascript独立实现 
+* 例如IE JScript位于jscript.dll文件中 DOM位于mshtml.dll 
+* safair DOM webkit  javascript squirrelFish
+* chrome DOM webkit  javascript v8
+* firefox DOM Gecko javascript spiderMonkey
+* inherently slow 天生慢 两个相互独立的功能只要通过节口彼此链接,就会产生消耗 减少交互次数
+* DOM访问与修改 
+	1. 减少DOM访问
+	2. innerHTML 比 document.createElement 快
+* 节点克隆 Cloning Nodes
+	1 使用element.clondeNode() 替代 document.createElement()
+	
+* HTML集合  HTML Collections
+	1. HTML集合是包含了DOM节点引用的类数组对象
+	2. document.getElementByName() document.getElementByClassName()  document.getElementByTagName()
+	3. document.images document.links document.forms document.forms[0].elements
+	4. HTML集合是“假定实时态” 会自动更新
+	5. 最好办法将复制到一个真正的数组中 
+	6. 少用集合尽量少用length属性  原因:读取length会引起集合进行更新
+	7. 最好使用一个局部变量缓存HTML集合 第一个优化原则是把集合存储到局部变量,并把length缓存到循环外部,然后使用局部变量替代读取元素
+	
+	 
+
+
 	
 	
 

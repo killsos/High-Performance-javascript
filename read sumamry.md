@@ -88,7 +88,7 @@
 	
 
 |属性名|被替代属性名|
-|-----|-----------|
+|:-----:|:-----------:|
 |children|childNodes|
 |childElementCount|childNodes.length|
 |firstElementChild|firstChild|

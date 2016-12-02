@@ -81,7 +81,12 @@
 	5. 最好办法将复制到一个真正的数组中 
 	6. 少用集合尽量少用length属性  原因:读取length会引起集合进行更新
 	7. 最好使用一个局部变量缓存HTML集合 第一个优化原则是把集合存储到局部变量,并把length缓存到循环外部,然后使用局部变量替代读取元素
-	
+
+* 遍历DOM walking the DOM
+	1. childNodes nextSibling
+	2. DOM元素属性诸如childNodes firstChild nextSibling并不区分元素节点与其他节点（注释节点 文本节点）通过浏览器提供API已经自行过滤的
+	|属性名|被替代属性名|
+	|-----|:-----------:|
 	 
 
 

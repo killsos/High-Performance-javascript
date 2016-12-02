@@ -85,8 +85,6 @@
 * 遍历DOM walking the DOM
 	1. childNodes nextSibling
 	2. DOM元素属性诸如childNodes firstChild nextSibling并不区分元素节点与其他节点（注释节点 文本节点）通过浏览器提供API已经自行过滤的
-	
-
 |属性名|被替代属性名|
 |:-----|-----------:|
 |children|childNodes|
@@ -95,7 +93,26 @@
 |lastElementChild|lastChild|
 |nextElementSibling|nextSibling|
 |previouslementChild|previousSibling|
-	 
+
+* 选择器API 使用querySelectorAll() 使用css选择器为参数 返回一个NodeList---包含着匹配节点的类数组对象,这个方法不会返回HTML集合  而返回的节点不会对应实时的文档结构,避免了性能问题
+
+##### 重绘与重构 repaints and reflows
+* 浏览器下载完成页面中所有组件html css js image 之后解析成两个内部数据结构  
+* DOM树 表示页面机构  render树 表示DOM节点如何显示
+* DOM树中每一个需要显示的节点在渲染树中至少存在一个对应的节点(隐藏的DOM元素在渲染树中没有对应节点)。渲染树中的节点称为帧frames或盒boxes,符合css模 型的定义,理解页面元素为一个具有内边距 外边距 边框 和position的盒子。一旦DOM和渲染树构建完成.浏览器就开始显示(绘制 repaint)页面元素
+* 当DOM元素的变化影响了元素的几何属性（width height),比如改变边框的宽度或给段落增加文字,导致行数增加---浏览器需要重新计算元素的几何属性---reflows
+* 在完成重排之后,浏览器会重新绘制受影响的部分到屏幕中---重绘---repaints
+* 重排
+	* 添加/删除DOM元素
+	* 元素位置改变
+	* 元素尺寸改变
+	* 内容改变
+	* 页面渲染器初始化
+	* 浏览器尺寸改变
+* 渲染树变化的排队和刷新 queuing and flushing render tree changes
+
+
+
 
 
 	

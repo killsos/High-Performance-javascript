@@ -110,8 +110,32 @@
 	* 页面渲染器初始化
 	* 浏览器尺寸改变
 * 渲染树变化的排队和刷新 queuing and flushing render tree changes
+* 由于每次重排会产生计算消耗,浏览器通过队列优化修改并批量执行来优化重排过程
+* 强制刷新队列并要求计划任务立刻执行,获取布局信息的操作会导致刷新
+	1. offsetTop/left offsetWidth/Height
+	2. scrollTop....
+	3. clientTop...
+	4. getComputedStyle()---IE
+	
+* 在修改样式的过程中,最好避免使用上面列出的属性,它们都会刷新渲染队列,即使你是在获取最近未发生改变的或者最新改变无关的布局信息
+* 最有效率的方法不要改变样式信息的时候 获取上面的属性 触发强制刷新渲染队列
 
+			document.body.currentStyle // IE Opera
+			document.defaultView.getComputedStyle // W3C
 
+* 最小化重绘和重排 Minimzing repaints and reflows
+	1. 使用style.cssText
+	2. 使用修改类名称
+	3. 批量修改DOM
+		* 当需要对DOM元素进行一系列操作时候,下面步骤会减少重绘和重排的次数
+			1. 使元素脱离文档流
+			2. 对其应用多重改变
+			3. 把元素带回文档中
+			相对应操作如下：
+			1. 隐藏元素,应用修改,重新显示
+			2. 使用文档片段document.fragment在当前DOM之外构建一个子树,再把它拷贝回文档
+			3. 将原始元素拷贝到一个脱离文档,修改副本,完成后再替换原始元素
+			
 
 
 

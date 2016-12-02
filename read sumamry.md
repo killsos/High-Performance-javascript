@@ -31,7 +31,7 @@
 #### 8. Recommended NonBlocking Pattern
 
 #### 9. Data Access 数据存取
-* 1. 尽量使用字面量和局部变量 避免使用数组和对象
-* 2. 
+1. 尽量使用字面量和局部变量 避免使用数组和对象
+2. 
 
 
